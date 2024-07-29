@@ -1468,6 +1468,24 @@ class RazerDeathAdderV2XHyperSpeed(__RazerDevice):
     DPI_MAX = 14000
 
 
+class RazerNagaEpic(__RazerDevice):
+    """
+    Class for the Razer Naga Epic
+    """
+    EVENT_FILE_REGEX = re.compile(r'.*Razer_Razer_Naga_Epic-if01-event-kbd')
+
+    USB_VID = 0x1532
+    USB_PID = 0x001F
+    DEDICATED_MACRO_KEYS = True
+    METHODS = ['get_device_type_mouse', 'max_dpi', 'get_dpi_xy_byte', 'set_dpi_xy_byte', 'get_poll_rate', 'set_poll_rate',
+               'get_scroll_brightness', 'set_scroll_brightness', 'set_scroll_none', 'set_scroll_static', 'set_scroll_spectrum',
+               'get_battery', 'is_charging', 'get_idle_time', 'set_idle_time', 'get_low_battery_threshold', 'set_low_battery_threshold']
+
+    DEVICE_IMAGE = "https://hwimg.nl/Razer_naga-epic.png"
+
+    DPI_MAX = 5600
+
+
 class RazerViperV2ProWired(__RazerDevice):
     """
     Class for the Razer Viper V2 Pro (Wired)
@@ -1570,6 +1588,20 @@ class RazerDeathAdderV3ProWireless(RazerDeathAdderV3ProWired):
     """
 
     USB_PID = 0x00B7
+
+
+class RazerDeathAdderV3ProWired_Alternate(RazerDeathAdderV3ProWired):
+    """
+    Class for the Razer DeathAdder V3 Pro (Wired)
+    """
+    USB_PID = 0x00C2
+
+
+class RazerDeathAdderV3ProWireless_Alternate(RazerDeathAdderV3ProWireless):
+    """
+    Class for the Razer DeathAdder V3 Pro (Wireless)
+    """
+    USB_PID = 0x00C3
 
 
 class RazerBasiliskV3ProWired(__RazerDevice):
@@ -1762,3 +1794,33 @@ class RazerBasiliskV3XHyperSpeed(__RazerDevice):
     DEVICE_IMAGE = "https://dl.razerzone.com/src2/9766/9766-1-en-v1.png"
 
     DPI_MAX = 18000
+
+
+class RazerViperV3ProWired(__RazerDevice):
+    """
+    Class for the Razer Viper V3 Pro (Wired)
+    """
+    EVENT_FILE_REGEX = re.compile(r'.*usb-Razer_Razer_Viper_V3_Pro-if0(1|2)-event-kbd')
+
+    USB_VID = 0x1532
+    USB_PID = 0x00C0
+    METHODS = ['get_device_type_mouse', 'max_dpi', 'get_dpi_xy', 'set_dpi_xy', 'get_dpi_stages', 'set_dpi_stages',
+               'get_poll_rate', 'set_poll_rate', 'get_supported_poll_rates',
+               'get_battery', 'is_charging', 'get_idle_time', 'set_idle_time', 'get_low_battery_threshold', 'set_low_battery_threshold']
+
+    DEVICE_IMAGE = "https://dl.razerzone.com/src2/14044/14044-1-en-v1.png"
+
+    POLL_RATES = [125, 500, 1000]
+    DPI_MAX = 35000
+
+
+class RazerViperV3ProWireless(RazerViperV3ProWired):
+    """
+    Class for the Razer Viper V3 Pro (Wireless)
+    """
+
+    USB_PID = 0x00C1
+
+    METHODS = RazerViperV3ProWired.METHODS + ['set_hyperpolling_wireless_dongle_indicator_led_mode']
+
+    POLL_RATES = [125, 500, 1000, 2000, 4000, 8000]
